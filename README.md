@@ -1,7 +1,7 @@
 # gulp-raster
 [![NPM version][npm-image]][npm-url] [![Dependency Status][depstat-image]][depstat-url]
 
-> raster plugin for [gulp](https://github.com/wearefractal/gulp)
+> Rasterization plugin for [gulp](https://github.com/wearefractal/gulp). It`s build on phantomjs and looks pretty much like svg2png, but output file content instead of saving it to disk. 
 
 ## Usage
 
@@ -14,24 +14,24 @@ npm i -D gulp-raster
 Then, add it to your `gulpfile.js`:
 
 ```javascript
-var raster = require("gulp-raster");
-var rename = require("gulp-rename");
+var raster = require('gulp-raster');
+var rename = require('gulp-rename');
 
 gulp.src('./src/**/svg/*.svg')
-    .pipe(tasks.raster())
-    .pipe(tasks.rename({extname: '.png'})
+    .pipe(raster())
+    .pipe(rename({extname: '.png'})
     .pipe(gulp.dest('./dist')),
 ```
 
 You also can specify scale and file format. Let`s say you want get icon set for retina:
 
 ```javascript
-var raster = require("gulp-raster");
-var rename = require("gulp-rename");
+var raster = require('gulp-raster');
+var rename = require('gulp-rename');
 
 gulp.src('./src/**/svg/*.svg')
-    .pipe(tasks.raster({format: 'jpg', scale: 2}))
-    .pipe(tasks.rename({extname: '.jpg', suffix: '-2x'})
+    .pipe(raster({format: 'jpg', scale: 2}))
+    .pipe(rename({extname: '.jpg', suffix: '-2x'})
     .pipe(gulp.dest('./dist')),
 ```
 
@@ -41,7 +41,7 @@ gulp.src('./src/**/svg/*.svg')
 
 #### options.scale
 Type: `Number`
-Default: 1
+Default: `1`
 
 Set scale rate of output image.
 
