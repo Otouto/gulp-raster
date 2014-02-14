@@ -20,7 +20,7 @@ module.exports = function (opt) {
 
         if (file.isBuffer()) {
             rasterize(file.path, opt.format, opt.scale, function (err, data) {
-                if (err) { throw new PluginError(PLUGIN_NAME, 'Error occured during file convertation'); }
+                if (err) { throw new PluginError(PLUGIN_NAME, 'Error occured during file conversion'); }
 
                 file.contents = data;
                 that.push(file);
