@@ -1,0 +1,34 @@
+{
+  "name": "gulp-raster",
+  "version": "0.0.1",
+  "description": "A plugin for Gulp",
+  "keywords": [
+    "gulpplugin", "svg", "png", "convert", "rasterize"
+  ],
+  "homepage": "https://github.com/Otouto/gulp-raster",
+  "bugs": "https://github.com/Otouto/gulp-raster/issues",
+  "author": {
+    "name": "Dmitry Lutsik",
+    "email": "otoyto@gmail.com",
+    "url": "https://github.com/Otouto"
+  },
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/otouto/gulp-raster.git"
+  },
+  "dependencies": {
+    "through2": "*",
+    "gulp-util": "~2.2.0",
+    "phantomjs": "^1.9.7-1"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
