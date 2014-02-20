@@ -20,7 +20,7 @@
   "dependencies": {
     "through2": "*",
     "gulp-util": "~2.2.0",
-    "phantomjs": "^1.9.7-1"
+    "phantomjs": "1.9.7-1"
   },
   "engines": {
     "node": ">=0.8.0",
