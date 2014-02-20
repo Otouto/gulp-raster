@@ -1,6 +1,6 @@
 {
   "name": "gulp-raster",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A plugin for Gulp",
   "keywords": [
     "gulpplugin", "svg", "png", "convert", "rasterize"
