@@ -19,7 +19,7 @@ var rename = require('gulp-rename');
 
 gulp.src('./src/**/svg/*.svg')
     .pipe(raster())
-    .pipe(rename({extname: '.png'})
+    .pipe(rename({extname: '.png'}))
     .pipe(gulp.dest('./dist')),
 ```
 
