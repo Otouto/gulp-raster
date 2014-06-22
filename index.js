@@ -19,7 +19,7 @@ module.exports = function (opt) {
         if (file.isNull()) { return callback(); }
 
         if (file.isBuffer()) {
-            rasterize(file.path, opt.format, opt.scale, function (err, data) {
+            rasterize(file.contents, opt.format, opt.scale, function (err, data) {
                 if (err) { throw new PluginError(PLUGIN_NAME, err); }
 
                 file.contents = data;
