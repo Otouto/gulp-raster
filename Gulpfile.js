@@ -1,9 +1,10 @@
 'use strict';
 
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var mocha = require('gulp-mocha');
-var stylish = require('jshint-stylish');
+var gulp = require('gulp'),
+    jshint = require('gulp-jshint'),
+    mocha = require('gulp-mocha'),
+    stylish = require('jshint-stylish'),
+    runSequence = require('run-sequence');
 
 gulp.task('jshint', function () {
   // Minify and copy all JavaScript (except vendor scripts)
@@ -25,9 +26,9 @@ gulp.task('mocha', function () {
 });
 
 
-gulp.task('test', function () {
-  gulp.run('mocha', function () {});
+gulp.task('test', function (done) {
+  runSequence('mocha', done);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['jshint', 'mocha', 'watch']);
+gulp.task('default', ['jshint', 'mocha']);

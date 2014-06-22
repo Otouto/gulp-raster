@@ -1,7 +1,7 @@
 # gulp-raster
 [![NPM version][npm-image]][npm-url] [![Dependency Status][depstat-image]][depstat-url]
 
-> Rasterization plugin for [gulp](https://github.com/wearefractal/gulp). It`s build on phantomjs and looks pretty much like svg2png, but output file content instead of saving it to disk. 
+> Rasterization plugin for [gulp](https://github.com/wearefractal/gulp). It`s build on phantomjs, but, in contrast to svg2png, does not deal with fs(creating or reading tmp files). 
 
 ## Usage
 
