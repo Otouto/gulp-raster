@@ -23,7 +23,7 @@ module.exports = function (opt) {
 
         if (file.isBuffer()) {
             rasterize(phantomProcess, file.contents.toString(), opt.format, opt.scale, function (err, data) {
-                if (err) { throw new PluginError(PLUGIN_NAME, err); }
+                if (err) { that.emit('error', new PluginError(PLUGIN_NAME, err)); }
 
                 file.contents = data;
                 that.push(file);
