@@ -1,7 +1,8 @@
 var through = require('through2'),
     gutil = require('gulp-util'),
-    rasterize = require('./lib'),
-    PluginError = gutil.PluginError;
+    rasterize = require('./lib/converter'),
+    PluginError = gutil.PluginError,
+    phridge = require('phridge');
 
 const PLUGIN_NAME = 'gulp-raster';
 
@@ -12,22 +13,24 @@ module.exports = function (opt) {
     opt.scale = opt.scale || 1;
     opt.format = opt.format || 'png';
 
-    function raster(file, enc, callback) {
+    var phantomProcess = phridge.spawn();
+
+    return through.obj(function (file, enc, cb) {
         var that = this;
 
         // Do nothing if no contents
-        if (file.isNull()) { return callback(); }
+        if (file.isNull()) { return cb(); }
 
         if (file.isBuffer()) {
-            rasterize(file.contents, opt.format, opt.scale, function (err, data) {
+            rasterize(phantomProcess, file.contents.toString(), opt.format, opt.scale, function (err, data) {
                 if (err) { throw new PluginError(PLUGIN_NAME, err); }
 
                 file.contents = data;
                 that.push(file);
-                return callback();
+                return cb();
             });
         }
-    }
-
-    return through.obj(raster);
+    }).on('end', function () {
+        phantomProcess.finally(phridge.disposeAll);
+    });
 };
