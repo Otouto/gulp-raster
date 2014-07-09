@@ -9,11 +9,11 @@ const PLUGIN_NAME = 'gulp-raster';
 module.exports = function (opt) {
     'use strict';
 
-    var phantomProcess = phridge.spawn();
-
     opt = opt || {};
     opt.scale = opt.scale || 1;
     opt.format = opt.format || 'png';
+
+    var phantomProcess = phridge.spawn();
 
     return through.obj(function (file, enc, cb) {
         var that = this;
@@ -22,7 +22,7 @@ module.exports = function (opt) {
         if (file.isNull()) { return cb(); }
 
         if (file.isBuffer()) {
-            rasterize(phantomProcess, file.path, opt.scale, opt.format, function (err, data) {
+            rasterize(phantomProcess, file.contents.toString(), opt.format, opt.scale, function (err, data) {
                 if (err) { that.emit('error', new PluginError(PLUGIN_NAME, err)); }
 
                 file.contents = data;
