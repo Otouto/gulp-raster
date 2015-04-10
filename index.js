@@ -22,7 +22,9 @@ module.exports = function (opt) {
         if (file.isNull()) { return cb(); }
 
         if (file.isBuffer()) {
-            rasterize(phantomProcess, file.contents.toString(), opt.format, opt.scale, function (err, data) {
+            var resetStylesheet = '<style>body,html{padding:0;margin:0}</style>';
+            var contents = file.contents.toString() + resetStylesheet;
+            rasterize(phantomProcess, contents, opt.format, opt.scale, function (err, data) {
                 if (err) { that.emit('error', new PluginError(PLUGIN_NAME, err)); }
 
                 file.contents = data;
