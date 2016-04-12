@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "description": "A rasterization plugin for Gulp",
   "keywords": [
-    "gulpplugin", "svg", "png", "convert", "rasterize"
+    "gulpplugin",
+    "svg",
+    "png",
+    "convert",
+    "rasterize"
   ],
   "homepage": "https://github.com/Otouto/gulp-raster",
   "bugs": "https://github.com/Otouto/gulp-raster/issues",
@@ -21,9 +25,11 @@
     "url": "git://github.com/otouto/gulp-raster.git"
   },
   "dependencies": {
-    "through2": "*",
+    "es6-promise": "^3.1.2",
     "gulp-util": "~2.2.14",
-    "phridge": "~0.1.2"
+    "phridge": "~2.0.0",
+    "promise.prototype.finally": "^1.0.1",
+    "through2": "*"
   },
   "devDependencies": {
     "mocha": "~1.10.0",
