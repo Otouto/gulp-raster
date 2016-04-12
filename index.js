@@ -3,8 +3,6 @@ var through = require('through2'),
     rasterize = require('./lib/converter'),
     PluginError = gutil.PluginError,
     phridge = require('phridge');
-require('es6-promise').polyfill();
-require('promise.prototype.finally');
 
 const PLUGIN_NAME = 'gulp-raster';
 
@@ -33,6 +31,11 @@ module.exports = function (opt) {
             });
         }
     }).on('end', function () {
-        phantomProcess.finally(phridge.disposeAll);
+        phantomProcess
+			.then(phridge.disposeAll)
+			.catch(function (err) {
+				phridge.disposeAll();
+				throw err;
+			});
     });
 };
