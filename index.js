@@ -31,6 +31,11 @@ module.exports = function (opt) {
             });
         }
     }).on('end', function () {
-        phantomProcess.finally(phridge.disposeAll);
+        phantomProcess
+			.then(phridge.disposeAll)
+			.catch(function (err) {
+				phridge.disposeAll();
+				throw err;
+			});
     });
 };
