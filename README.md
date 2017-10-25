@@ -51,6 +51,12 @@ Default: `png`
 
 Set output file format, png/jpg are available.
 
+#### options.styles
+Type: `String`
+Default: `''`
+
+Set custom styles (for example, if you need to use custom fonts).
+
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)

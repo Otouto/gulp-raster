@@ -12,6 +12,7 @@ module.exports = function (opt) {
     opt = opt || {};
     opt.scale = opt.scale || 1;
     opt.format = opt.format || 'png';
+    opt.styles = opt.styles || '';
 
     var phantomProcess = phridge.spawn();
 
@@ -22,7 +23,7 @@ module.exports = function (opt) {
         if (file.isNull()) { return cb(); }
 
         if (file.isBuffer()) {
-            rasterize(phantomProcess, file.contents.toString(), opt.format, opt.scale, function (err, data) {
+            rasterize(phantomProcess, file.contents.toString(), opt.format, opt.scale, opt.styles, function (err, data) {
                 if (err) { that.emit('error', new PluginError(PLUGIN_NAME, err)); }
 
                 file.contents = data;
